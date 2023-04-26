@@ -3,13 +3,12 @@ import { YOUTUBE_POPULAR_VIDEO_LIST } from "../utils/config";
 import VideoCard from "./VideoCard";
 
 const VideoCardContainer = () => {
-
   const [videos, setVideos] = useState([]);
 
   //console.log("you are here");
   useEffect(() => {
     console.log("you are here");
-   getPopularVideos();
+    getPopularVideos();
     console.log("you are here");
   }, []);
 
@@ -24,9 +23,14 @@ const VideoCardContainer = () => {
     }
   };
 
-  return videos.length === 0 ? (<div>Loading...</div>) : (
-    <div>
-      <VideoCard data={videos[0]} />
+  return videos.length === 0 ? (
+    <div>Loading...</div>
+  ) : (
+    <div className="flex flex-row flex-wrap">
+      {videos.map(video => {
+        return (<VideoCard data={video} />)
+      })}
+      
     </div>
   );
 };
