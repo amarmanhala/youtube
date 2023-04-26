@@ -1,7 +1,7 @@
 import React from "react";
 import FilterButton from "./FilterButton";
 
-const data = ["All", "Gaming", "Songs", "Music", "Comedy", "Mixes", "Food"];
+const data = ["All", "Gaming", "Songs", "Music", "Comedy", "Mixes", "Food", "Love"];
 
 const ButtonList = () => {
   return (
