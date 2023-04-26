@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { YOUTUBE_POPULAR_VIDEO_LIST } from "../utils/config";
 import VideoCard from "./VideoCard";
+import { Link } from "react-router-dom";
 
 const VideoCardContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -28,7 +29,7 @@ const VideoCardContainer = () => {
   ) : (
     <div className="flex flex-row flex-wrap">
       {videos.map(video => {
-        return (<VideoCard data={video} />)
+        return (<Link to={"/watch?v=" + video.id}><VideoCard data={video} /></Link>)
       })}
       
     </div>
