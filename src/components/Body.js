@@ -2,11 +2,14 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import MainContainer from './MainContainer'
 
+
 const Body = () => {
   return (
     <>
-    <Sidebar />
-    <MainContainer />
+    <div className="flex flex-row w-full">
+      <Sidebar />
+      <MainContainer />
+    </div>
     </>
   )
 }
