@@ -1,39 +1,44 @@
 import React from "react";
-import { MdOutlineHome } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { MdOutlineVideoLibrary } from "react-icons/md";
+import { MdOutlineWatch } from "react-icons/md";
+import { MdOutlineWatchLater } from "react-icons/md";
+import { MdOutlineHistory } from "react-icons/md";
+import { MdOutlineSubscriptions } from "react-icons/md";
+import { MdOutlineHome, MdOutlineMovie, MdOndemandVideo } from "react-icons/md";
+import { useSelector  } from "react-redux";
 
 const data = [
   {
     label: "Home",
-    icon: <MdOutlineHome />,
+    icon: <MdOutlineHome size={24} />,
   },
   {
-    label: "HomShortse",
-    icon: <MdOutlineHome />,
+    label: "Shorts",
+    icon: <MdOutlineMovie size={24} />,
   },
   {
     label: "Subscriptions",
-    icon: <MdOutlineHome />,
+    icon: <MdOutlineSubscriptions size={24} />,
   },
   {
     label: "Library",
-    icon: <MdOutlineHome />,
+    icon: <MdOutlineVideoLibrary size={24} />,
   },
   {
     label: "History",
-    icon: <MdOutlineHome />,
+    icon: <MdOutlineHistory size={24} />,
   },
   {
     label: "Your videos",
-    icon: <MdOutlineHome />,
+    icon: <MdOndemandVideo size={24} />,
   },
   {
     label: "Your movies",
-    icon: <MdOutlineHome />,
+    icon: <MdOutlineMovie size={24} />,
   },
   {
     label: "Watch later",
-    icon: <MdOutlineHome />,
+    icon: <MdOutlineWatchLater size={24} />,
   },
 ];
 
