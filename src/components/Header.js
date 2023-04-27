@@ -9,6 +9,7 @@ import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/config";
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   //console.log(searchQuery);
   const dispatch = useDispatch();
 
@@ -48,18 +49,28 @@ const Header = () => {
           <Search
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
           />
         </div>
-        <div className="bg-white border border-zinc-200 relative w-full rounded-xl mt-1">
-
-         <div className="py-6 px-4">
-            <ul className="text-lg font-medium">
-             {searchSuggestions.map((suggestion) => {
-              return (<li key={suggestion} className="pb-2">{suggestion}</li>)
-             })}
-            </ul>
-         </div>
-        </div>
+        {(showSuggestions && searchSuggestions.length !== 0) && (
+          <div className="bg-white border border-zinc-200 relative w-full rounded-xl mt-1">
+            <div className="py-6">
+              <ul className="text-lg font-medium">
+                {searchSuggestions.map((suggestion) => {
+                  return (
+                    <li
+                      key={suggestion}
+                      className="pb-2 hover:bg-zinc-100 px-4 cursor-pointer"
+                    >
+                      {suggestion}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
 
       <div>
