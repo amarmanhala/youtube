@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlineMenu, MdPerson2 } from "react-icons/md";
 import logo from "../logo_dark.png";
 import Search from "./Search";
@@ -6,7 +6,14 @@ import { useDispatch } from "react-redux";
 import { toggleActionForSidebar } from "../utils/sidebarToggleSlice";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  console.log(searchQuery);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+
+  }, [searchQuery]);
+
   const toggleSidebar = () => {
     dispatch(toggleActionForSidebar());
   };
@@ -23,7 +30,7 @@ const Header = () => {
         </div>
       </div>
       <div className="w-[40%]">
-        <Search />
+        <Search value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
       </div>
       <div>
         <MdPerson2 size={24} color="#fff" />
