@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { MdOutlineMenu, MdPerson2 } from "react-icons/md";
 import logo from "../logo_dark.png";
 import Search from "./Search";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleActionForSidebar } from "../utils/sidebarToggleSlice";
 import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/config";
+import { MdOutlineSearch } from "react-icons/md";
+import store from "../utils/store";
+import { cacheSearchSuggestions } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -13,8 +16,16 @@ const Header = () => {
   //console.log(searchQuery);
   const dispatch = useDispatch();
 
+  const searchCache = useSelector(store => store.search);
+  //Cache looks like this - "iphone": []
+
   useEffect(() => {
-    const timer = setTimeout(() => getSearchSuggestions(), 200);
+    const timer = setTimeout(() =>  {
+    if (searchCache[searchQuery]) {
+      setSearchSuggestions(searchCache[searchQuery]);
+    } else {
+      getSearchSuggestions()
+    }}, 200);
 
     return () => {
       clearTimeout(timer);
@@ -26,6 +37,9 @@ const Header = () => {
     const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
     const json = await data.json();
     setSearchSuggestions(json[1]);
+    dispatch(cacheSearchSuggestions({
+      [searchQuery]: json[1]
+    }))
     //console.log(json[1]);
   };
 
@@ -53,7 +67,7 @@ const Header = () => {
             onBlur={() => setShowSuggestions(false)}
           />
         </div>
-        {(showSuggestions && searchSuggestions.length !== 0) && (
+        {showSuggestions && searchSuggestions.length !== 0 && (
           <div className="bg-white border border-zinc-200 relative w-full rounded-xl mt-1">
             <div className="py-6">
               <ul className="text-lg font-medium">
@@ -61,9 +75,10 @@ const Header = () => {
                   return (
                     <li
                       key={suggestion}
-                      className="pb-2 hover:bg-zinc-100 px-4 cursor-pointer"
+                      className="pb-2 hover:bg-zinc-100 px-4 cursor-pointer flex flex-row items-center"
                     >
-                      {suggestion}
+                      <MdOutlineSearch />
+                      &nbsp; {suggestion}
                     </li>
                   );
                 })}

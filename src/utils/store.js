@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sidebarToggleSlice from "./sidebarToggleSlice";
+import searchSlice from "./searchSlice";
 
 const store = configureStore({
 reducer: {
-  toggle: sidebarToggleSlice
+  toggle: sidebarToggleSlice,
+  search: searchSlice
 }
 });
 
