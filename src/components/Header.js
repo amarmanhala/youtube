@@ -8,6 +8,7 @@ import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/config";
 import { MdOutlineSearch } from "react-icons/md";
 import store from "../utils/store";
 import { cacheSearchSuggestions } from "../utils/searchSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -55,7 +56,7 @@ const Header = () => {
           </button>
         </div>
         <div>
-          <img alt="youtube logo" src={logo} className="h-[20px] w-[90px]" />
+        <a href="/"><img alt="youtube logo" src={logo} className="h-[20px] w-[90px]" /></a>
         </div>
       </div>
       <div className="flex flex-col w-[40%]">

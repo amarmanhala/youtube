@@ -4,7 +4,7 @@ import VideoCardContainer from './VideoCardContainer'
 
 const MainContainer = () => {
   return (
-    <div className="w-full">
+    <div className="w-[86%]">
       <ButtonList />
       <VideoCardContainer />
     </div>

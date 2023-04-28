@@ -1,15 +1,84 @@
 import React from "react";
 import FilterButton from "./FilterButton";
 
-const data = ["All", "Gaming", "Songs", "Music", "Comedy", "Mixes", "Food", "Love"];
+const data = [
+  {
+    name: "Norway",
+    region_code: "NO",
+  },
+  {
+    name: "Ireland",
+    region_code: "IE",
+  },
+  {
+    name: "Switzerland",
+    region_code: "CH",
+  },
+  {
+    name: "Iceland",
+    region_code: "IS",
+  },
+  {
+    name: "Germany",
+    region_code: "DE",
+  },
+  {
+    name: "Sweden",
+    region_code: "SE",
+  },
+  {
+    name: "Australia",
+    region_code: "AU",
+  },
+  {
+    name: "Netherlands",
+    region_code: "NL",
+  },
+  {
+    name: "Denmark",
+    region_code: "DK",
+  },
+  {
+    name: "Finland",
+    region_code: "FI",
+  },
+  {
+    name: "Canada",
+    region_code: "CA",
+  },
+  {
+    name: "Singapore",
+    region_code: "SG",
+  },
+  {
+    name: "Belgium",
+    region_code: "BE",
+  },
+  {
+    name: "Austria",
+    region_code: "AT",
+  },
+  {
+    name: "Luxembourg",
+    region_code: "LU",
+  },
+  {
+    name: "USA",
+    region_code: "US",
+  },
+  {
+    name: "Japan",
+    region_code: "JP",
+  },
+];
 
 const ButtonList = () => {
   return (
-    <div className="flex flex-row items-center w-full p-3 overflow-x-auto">
-      {data.map((item) => {
+    <div className="flex flex-row items-center w-full py-3 px-4 overflow-scroll">
+      {data.map((item, index) => {
         return (
           <div className="mr-4">
-            <FilterButton label={item} />
+            <FilterButton key={index} label={item.name} regionCode={item.region_code} />
           </div>
         );
       })}
