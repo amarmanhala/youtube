@@ -4,7 +4,8 @@ const searchSlice = createSlice({
   name: "search",
   initialState: {
     searchSuggestions: {},
-    search: false
+    search: false,
+    searchQuery: ""
   },
   reducers: {
     cacheSearchSuggestions: (state, action) => {
@@ -12,10 +13,13 @@ const searchSlice = createSlice({
     },
     searchTrue: (state) => {
       state.search = true;
+    },
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
     }
   },
 });
 
 export default searchSlice.reducer;
 
-export const { cacheSearchSuggestions, searchTrue } = searchSlice.actions;
+export const { cacheSearchSuggestions, searchTrue, setSearchQuery } = searchSlice.actions;
