@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sidebarToggleSlice from "./sidebarToggleSlice";
 import searchSlice from "./searchSlice";
-import videosSlice from "./videosSlice";
+import videosFilterByRegionSlice from "./videosFilterByRegionSlice";
 
 const store = configureStore({
-reducer: {
-  toggle: sidebarToggleSlice,
-  search: searchSlice,
-  videos: videosSlice
-}
+  reducer: {
+    toggle: sidebarToggleSlice,
+    search: searchSlice,
+    filters: videosFilterByRegionSlice,
+  },
 });
 
 export default store;

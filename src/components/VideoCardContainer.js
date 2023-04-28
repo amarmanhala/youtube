@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_POPULAR_VIDEO_LIST } from "../utils/config";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const VideoCardContainer = () => {
   const [videos, setVideos] = useState([]);
+  
+  const dispatch = useDispatch();
 
-  //console.log("you are here");
+  
   useEffect(() => {
-    console.log("you are here");
+    
     getPopularVideos();
-    console.log("you are here");
+   
   }, []);
 
   const getPopularVideos = async () => {
