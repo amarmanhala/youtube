@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import abbreviateNumber from "../utils/abbreviateNumber";
 
 const VideoCard = ({ data }) => {
-  console.log(data);
+  
 
   const { snippet, statistics } = data;
   const { title, publishedAt, thumbnails, channelTitle } = snippet;

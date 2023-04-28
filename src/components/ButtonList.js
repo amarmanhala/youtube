@@ -1,5 +1,7 @@
 import React from "react";
 import FilterButton from "./FilterButton";
+import { useDispatch } from "react-redux";
+import { setRegionCode } from "../utils/videosFilterByRegionSlice";
 
 const data = [
   {
@@ -73,12 +75,19 @@ const data = [
 ];
 
 const ButtonList = () => {
+
+  const dispatch = useDispatch();
+
+  const handleFilterByRegion = (regionCode) => {
+    console.log("Dispatch", regionCode);
+    dispatch(setRegionCode(regionCode))
+  }
   return (
     <div className="flex flex-row items-center w-full py-3 px-4 overflow-scroll">
       {data.map((item, index) => {
         return (
           <div className="mr-4">
-            <FilterButton key={index} label={item.name} regionCode={item.region_code} />
+            <FilterButton key={index} label={item.name} regionCode={item.region_code} onClick={() => handleFilterByRegion(item.region_code)} />
           </div>
         );
       })}

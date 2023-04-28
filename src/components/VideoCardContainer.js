@@ -2,26 +2,23 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_POPULAR_VIDEO_LIST } from "../utils/config";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const VideoCardContainer = () => {
   const [videos, setVideos] = useState([]);
-  
-  const dispatch = useDispatch();
 
-  
+  const filterByRegion = useSelector((store) => store.filters.regionCode);
+
   useEffect(() => {
-    
     getPopularVideos();
-   
-  }, []);
+  }, [filterByRegion]);
 
   const getPopularVideos = async () => {
     try {
-      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST);
+      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion);
       const json = await data.json();
       setVideos(json.items);
-      console.log(json);
+     
     } catch (err) {
       console.log(err);
     }
@@ -31,10 +28,13 @@ const VideoCardContainer = () => {
     <div>Loading...</div>
   ) : (
     <div className="flex flex-row flex-wrap">
-      {videos.map(video => {
-        return (<Link to={"/watch?v=" + video.id}><VideoCard data={video} /></Link>)
+      {videos.map((video) => {
+        return (
+          <Link to={"/watch?v=" + video.id}>
+            <VideoCard data={video} />
+          </Link>
+        );
       })}
-      
     </div>
   );
 };
