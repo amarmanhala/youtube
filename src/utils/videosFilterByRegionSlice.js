@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const videosFilterByRegionSlice = createSlice({
   name: "filters",
   initialState: {
-    regionCode: "US" //Default region code
+    regionCode: "US", //Default region code
   },
   reducers: {
     setRegionCode: (state, action) => {

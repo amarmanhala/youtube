@@ -3,11 +3,13 @@ import { YOUTUBE_POPULAR_VIDEO_LIST } from "../utils/config";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import SearchVideosContainer from "./SearchVideosContainer";
 
 const VideoCardContainer = () => {
   const [videos, setVideos] = useState([]);
 
   const filterByRegion = useSelector((store) => store.filters.regionCode);
+
 
   useEffect(() => {
     getPopularVideos();
@@ -18,11 +20,11 @@ const VideoCardContainer = () => {
       const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion);
       const json = await data.json();
       setVideos(json.items);
-     
     } catch (err) {
       console.log(err);
     }
   };
+  
 
   return videos.length === 0 ? (
     <div>Loading...</div>
@@ -37,6 +39,8 @@ const VideoCardContainer = () => {
       })}
     </div>
   );
+
+  
 };
 
 export default VideoCardContainer;

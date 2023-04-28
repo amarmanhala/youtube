@@ -17,7 +17,8 @@ const Header = () => {
   //console.log(searchQuery);
   const dispatch = useDispatch();
 
-  const searchCache = useSelector(store => store.search);
+  const searchCache = useSelector(store => store.search.searchSuggestions);
+  
   //Cache looks like this - "iphone": []
 
   useEffect(() => {
