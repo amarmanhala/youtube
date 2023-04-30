@@ -20,6 +20,7 @@ const VideoCardContainer = () => {
       const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion);
       const json = await data.json();
       setVideos(json.items);
+      //console.log(json.items);
     } catch (err) {
       console.log(err);
     }

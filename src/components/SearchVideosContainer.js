@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import useGetVideosBySearch from "../utils/hooks/useGetVideosBySearch";
 import { useSelector } from "react-redux";
 import { YOUTUBE_BASE_SEARCH_URL } from "../utils/config";
+import { Link } from "react-router-dom";
+import SearchVideoCard from "./SearchVideoCard";
 
 const SearchVideosContainer = () => {
   const searchQuery = useSelector((store) => store.search.searchQuery);
@@ -17,6 +19,7 @@ const SearchVideosContainer = () => {
     );
     const json = await data.json();
     setVideos(json.items);
+    console.log(json.items);
   };
 
   return videos.length === 0 ? (
@@ -25,9 +28,9 @@ const SearchVideosContainer = () => {
     <div>
       {videos.map((video) => {
         return (
-          <div>
-            <h1 className="text-white">Hello</h1>
-          </div>
+          <Link to={"/watch?v=" + video.id}>
+            <SearchVideoCard data={video} />
+          </Link>
         );
       })}
     </div>

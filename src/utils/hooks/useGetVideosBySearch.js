@@ -13,7 +13,7 @@ const useGetVideosBySearch = (searchQuery) => {
 
   const getVideosBySearch = async (searchQuery) => {
     const data = await fetch(
-      `${YOUTUBE_BASE_SEARCH_URL}&q=${searchQuery}&maxResults=${25}`
+      `${YOUTUBE_BASE_SEARCH_URL}&part=snippet%2CcontentDetails%2Cstatistics&q=${searchQuery}&maxResults=${25}`
     );
     const json = await data.json();
 
