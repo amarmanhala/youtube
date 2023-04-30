@@ -25,11 +25,11 @@ const SearchVideosContainer = () => {
   return videos.length === 0 ? (
     <div>Loading....</div>
   ) : (
-    <div>
+    <div className="pt-16 pl-20 border-t border-t-zinc-700">
       {videos.map((video) => {
         return (
           <Link to={"/watch?v=" + video.id}>
-            <SearchVideoCard data={video} />
+            <SearchVideoCard data={video} />s
           </Link>
         );
       })}
