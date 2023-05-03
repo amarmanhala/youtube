@@ -17,17 +17,18 @@ const Header = () => {
   //console.log(searchQuery);
   const dispatch = useDispatch();
 
-  const searchCache = useSelector(store => store.search.searchSuggestions);
-  
+  const searchCache = useSelector((store) => store.search.searchSuggestions);
+
   //Cache looks like this - "iphone": []
 
   useEffect(() => {
-    const timer = setTimeout(() =>  {
-    if (searchCache[searchQuery]) {
-      setSearchSuggestions(searchCache[searchQuery]);
-    } else {
-      getSearchSuggestions()
-    }}, 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSearchSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
 
     return () => {
       clearTimeout(timer);
@@ -39,9 +40,11 @@ const Header = () => {
     const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
     const json = await data.json();
     setSearchSuggestions(json[1]);
-    dispatch(cacheSearchSuggestions({
-      [searchQuery]: json[1]
-    }))
+    dispatch(
+      cacheSearchSuggestions({
+        [searchQuery]: json[1],
+      })
+    );
     //console.log(json[1]);
   };
 
@@ -57,7 +60,9 @@ const Header = () => {
           </button>
         </div>
         <div>
-        <a href="/"><img alt="youtube logo" src={logo} className="h-[20px] w-[90px]" /></a>
+          <a href="/">
+            <img alt="youtube logo" src={logo} className="h-[20px] w-[90px]" />
+          </a>
         </div>
       </div>
       <div className="flex flex-col w-[40%]">

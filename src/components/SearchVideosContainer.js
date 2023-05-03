@@ -23,7 +23,7 @@ const SearchVideosContainer = () => {
       getVideosBySearch(searchQuery);
     }
     
-  }, []);
+  }, [searchQuery]);
 
   const getVideosBySearch = async (searchQuery) => {
     const data = await fetch(

@@ -46,7 +46,7 @@ const Sidebar = () => {
   const isSidebarOpen = useSelector((store) => store.toggle.isSidebarOpen);
 
   return !isSidebarOpen ? null : (
-    <div className="w-[16%] h-screen bg-zinc-950 p-6">
+    <div className="w-[16%] h-screen bg-zinc-950 p-6 ">
       <div>
         <ul className="text-white text-sm font-medium">
           {data.map((item) => {
