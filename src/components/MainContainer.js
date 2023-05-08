@@ -7,7 +7,7 @@ import SearchVideosContainer from './SearchVideosContainer'
 const MainContainer = () => {
   const search = useSelector(store => store.search.search);
   return (
-    <div className="w-4/5">
+    <div className="w-5/6">
       {!search ? <><ButtonList /><VideoCardContainer /></> : <SearchVideosContainer />} 
     </div>
   )

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdOutlineVideoLibrary } from "react-icons/md";
-import { MdOutlineWatch } from "react-icons/md";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { MdOutlineHistory } from "react-icons/md";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import { MdOutlineHome, MdOutlineMovie, MdOndemandVideo } from "react-icons/md";
-import { useSelector  } from "react-redux";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const data = [
   {
@@ -44,17 +44,31 @@ const data = [
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((store) => store.toggle.isSidebarOpen);
+  const [active, setActive] = useState(0);
+
+  const handleClick = (index) => {
+    setActive(index);
+    console.log(index);
+  };
 
   return !isSidebarOpen ? null : (
-    <div className="w-1/5 h-screen bg-zinc-950 p-6 ">
+    <div className="w-1/6 h-screen bg-zinc-950 p-6">
       <div>
         <ul className="text-white text-sm font-medium">
-          {data.map((item) => {
+          {data.map((item, index) => {
             return (
-              <li className="flex flex-row pb-6 items-center">
-                <div className="mr-6">{item.icon}</div>
-                {item.label}
-              </li>
+              <Link to="/">
+                <li
+                  key={index}
+                  onClick={() => handleClick(index)}
+                  className={`${
+                    active === index ? "bg-zinc-900" : "bg-transparent"
+                  } flex flex-row h-12 items-center hover:bg-zinc-900 rounded-xl cursor-pointer pl-3`}
+                >
+                  <div className="mr-6">{item.icon}</div>
+                  {item.label}
+                </li>
+              </Link>
             );
           })}
         </ul>
