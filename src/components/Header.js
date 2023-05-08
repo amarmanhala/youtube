@@ -10,6 +10,7 @@ import store from "../utils/store";
 import { cacheSearchSuggestions } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
 
+
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
@@ -53,6 +54,7 @@ const Header = () => {
   };
   return (
     <header className="flex flex-row justify-between  w-full h-14 py-4 px-6 bg-zinc-950">
+       
       <div className="flex flex-row justify-between items-center">
         <div className="flex mr-4">
           <button onClick={() => toggleSidebar()} className="rounded-full">

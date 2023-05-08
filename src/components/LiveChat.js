@@ -20,7 +20,7 @@ const LiveChat = () => {
           message: getRandomSentence(),
         })
       );
-    }, 2000);
+    }, 5000);
     return () => {
       clearInterval(pollData);
     };
