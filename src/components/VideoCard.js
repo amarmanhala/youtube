@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import abbreviateNumber from "../utils/abbreviateNumber";
+import { convertViewsCount } from "../utils/helper";
 
 const VideoCard = ({ data }) => {
   
@@ -13,7 +13,7 @@ const VideoCard = ({ data }) => {
       <div className="rounded-xl overflow-hidden"><img alt="fjehfj" src={thumbnails.medium.url} /></div>
       <p className="text-white font-semibold text-md pt-2.5 pb-1">{title}</p>
       <p className="text-zinc-400 text-sm font-medium">{channelTitle}</p>
-      <p  className="text-zinc-400 text-sm font-medium py-0.5">{statistics.viewCount} views</p>
+      <p  className="text-zinc-400 text-sm font-medium py-0.5">{convertViewsCount(statistics.viewCount)} views</p>
     </div>
   );
 };

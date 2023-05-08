@@ -30,5 +30,17 @@ export const getRandomSentence = () => {
   return sentence.trim() + '.';
 };
 
+export const convertViewsCount = (viewsCount) => {
+  if (viewsCount >= 1000000000) {
+    return (viewsCount / 1000000000).toFixed(1) + 'B'; // convert to billions and add "B"
+  } else if (viewsCount >= 1000000) {
+    return (viewsCount / 1000000).toFixed(1) + 'M'; // convert to millions and add "M"
+  } else if (viewsCount >= 1000) {
+    return (viewsCount / 1000).toFixed(1) + 'K'; // convert to thousands and add "K"
+  } else {
+    return viewsCount.toString(); // return the original number as a string
+  }
+}
+
 
 

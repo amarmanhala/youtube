@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FilterButton from "./FilterButton";
 import { useDispatch } from "react-redux";
 import { setRegionCode } from "../utils/videosFilterByRegionSlice";
@@ -77,9 +77,11 @@ const data = [
 const ButtonList = () => {
 
   const dispatch = useDispatch();
+  const [active, setActive] = useState(0);
 
-  const handleFilterByRegion = (regionCode) => {
+  const handleFilterByRegion = (regionCode, index) => {
     console.log("Dispatch", regionCode);
+setActive(index);
     dispatch(setRegionCode(regionCode))
   }
   return (
@@ -87,7 +89,7 @@ const ButtonList = () => {
       {data.map((item, index) => {
         return (
           <div className="mr-4">
-            <FilterButton key={index} label={item.name} regionCode={item.region_code} onClick={() => handleFilterByRegion(item.region_code)} />
+            <FilterButton key={index} isActive={active} keyProps={index} label={item.name} regionCode={item.region_code} onClick={() => handleFilterByRegion(item.region_code, index)} />
           </div>
         );
       })}
