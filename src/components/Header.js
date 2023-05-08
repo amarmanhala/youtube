@@ -7,12 +7,12 @@ import { toggleActionForSidebar } from "../utils/sidebarToggleSlice";
 import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/config";
 import { MdOutlineSearch } from "react-icons/md";
 import store from "../utils/store";
-import { cacheSearchSuggestions } from "../utils/searchSlice";
+import { cacheSearchSuggestions, searchTrue, setSearchQuery } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
 
 
 const Header = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchString, setSearchString] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   //console.log(searchQuery);
@@ -24,8 +24,8 @@ const Header = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (searchCache[searchQuery]) {
-        setSearchSuggestions(searchCache[searchQuery]);
+      if (searchCache[searchString]) {
+        setSearchSuggestions(searchCache[searchString]);
       } else {
         getSearchSuggestions();
       }
@@ -34,16 +34,16 @@ const Header = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [searchQuery]);
+  }, [searchString]);
 
   const getSearchSuggestions = async () => {
-    console.log("Call an api with", searchQuery);
-    const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
+    console.log("Call an api with", searchString);
+    const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchString);
     const json = await data.json();
     setSearchSuggestions(json[1]);
     dispatch(
       cacheSearchSuggestions({
-        [searchQuery]: json[1],
+        [searchString]: json[1],
       })
     );
     //console.log(json[1]);
@@ -52,6 +52,15 @@ const Header = () => {
   const toggleSidebar = () => {
     dispatch(toggleActionForSidebar());
   };
+
+const handleSearch = (suggestion) => {
+  console.log(suggestion);
+  setSearchString(suggestion);
+  dispatch(searchTrue());
+  dispatch(setSearchQuery(suggestion)); 
+  setShowSuggestions(false);
+}
+  
   return (
     <header className="flex flex-row justify-between  w-full h-14 py-4 px-6 bg-zinc-950">
        
@@ -70,24 +79,27 @@ const Header = () => {
       <div className="flex flex-col w-[40%]">
         <div className="w-full">
           <Search
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            value={searchString}
+            onChange={(e) => setSearchString(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
-            onBlur={() => setShowSuggestions(false)}
+            onBlur={() => setShowSuggestions(true)}
           />
         </div>
         {showSuggestions && searchSuggestions.length !== 0 && (
           <div className="bg-white border border-zinc-200 relative w-full rounded-xl mt-1">
             <div className="py-6">
               <ul className="text-lg font-medium">
-                {searchSuggestions.map((suggestion) => {
+                {searchSuggestions.map((suggestion, index) => {
                   return (
                     <li
-                      key={suggestion}
+                      key={index}
                       className="pb-2 hover:bg-zinc-100 px-4 cursor-pointer flex flex-row items-center"
+                      onClick={() => handleSearch(suggestion)}
                     >
-                      <MdOutlineSearch />
-                      &nbsp; {suggestion}
+                   
+                        <MdOutlineSearch />
+                        &nbsp; {suggestion}
+                   
                     </li>
                   );
                 })}
