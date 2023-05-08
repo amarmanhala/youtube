@@ -4,6 +4,7 @@ import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchVideosContainer from "./SearchVideosContainer";
+import SkeltonVideoCards from "./SkeltonVideoCards";
 
 const VideoCardContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -28,7 +29,7 @@ const VideoCardContainer = () => {
   
 
   return videos.length === 0 ? (
-    <div>Loading...</div>
+    <SkeltonVideoCards />
   ) : (
     <div className="flex flex-row flex-wrap">
       {videos.map((video) => {
