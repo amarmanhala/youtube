@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { convertViewsCount } from "../utils/helper";
+import useGetChannelList from "../utils/hooks/useGetChannelList";
 
 const VideoCard = ({ data }) => {
   const { snippet, statistics } = data;
-  const { title, publishedAt, thumbnails, channelTitle } = snippet;
+  const { title, publishedAt, thumbnails, channelTitle, channelId } = snippet;
+  const channel = useGetChannelList(channelId);
+  console.log("This is channel", channel);
 
   return (
     <div className="p-4 w-[360px]">

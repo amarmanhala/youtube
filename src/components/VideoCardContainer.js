@@ -32,13 +32,13 @@ const VideoCardContainer = () => {
     <SkeltonVideoCards />
   ) : (
     <div className="flex flex-row flex-wrap">
-      {videos.map((video) => {
+      { videos.map((video) => {
         return (
           <Link to={"/watch?v=" + video.id}>
             <VideoCard data={video} />
           </Link>
         );
-      })}
+      }) }
     </div>
   );
 
