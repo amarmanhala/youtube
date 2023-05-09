@@ -42,5 +42,15 @@ export const convertViewsCount = (viewsCount) => {
   }
 }
 
+export const generateAvatarWithFirstSecondLetter = (name) => {
+  const words = name.split(" ");
+  console.log(words[0]);
+  return (
+    <div className="w-[50px] h-[50px] bg-red-400 text-white">
+      <span>A</span>
+    </div>
+  )
+}
+
 
 
