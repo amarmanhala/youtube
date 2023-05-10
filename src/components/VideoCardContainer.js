@@ -16,6 +16,15 @@ const VideoCardContainer = () => {
     getPopularVideos();
   }, [filterByRegion]);
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScroll = () => {
+    console.log("Scroling........")
+  }
+
   const getPopularVideos = async () => {
     try {
       const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion);
