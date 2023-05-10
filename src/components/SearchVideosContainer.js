@@ -40,7 +40,7 @@ const SearchVideosContainer = () => {
   return videos.length === 0 ? (
     <div>Loading....</div>
   ) : (
-    <div className="pt-16 pl-20 border-t border-t-zinc-700">
+    <div className="mt-14 pt-6 pl-20 border-t border-t-zinc-700">
       {videos.map((video) => {
         return (
           <Link to={"/watch?v=" + video.id}>

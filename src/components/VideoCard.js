@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { convertViewsCount, generateAvatarWithFirstSecondLetter } from "../utils/helper";
+import AvatarInitials from "./AvatarInitials";
 
 const VideoCard = ({ data }) => {
   const { snippet, statistics } = data;
@@ -16,11 +17,19 @@ const VideoCard = ({ data }) => {
           loading="lazy"
         />
       </div>
-      <p className="text-white font-semibold text-md pt-2.5 pb-1">{title}</p>
-      <p className="text-zinc-400 text-sm font-medium">{channelTitle}</p>
-      <p className="text-zinc-400 text-sm font-medium py-0.5">
-        {convertViewsCount(statistics.viewCount)} views
-      </p>
+      <div className="flex pt-4 pb-2">
+      <div className="w-[40px] mr-3"><AvatarInitials name={channelTitle} /></div>
+     <div>
+        <p className="text-white font-semibold text-md pb-1">{title}</p>
+        <p className="text-zinc-400 text-sm font-medium">{channelTitle}</p>
+        
+        <p className="text-zinc-400 text-sm font-medium py-0.5">
+          {convertViewsCount(statistics.viewCount)} views
+        </p>
+     </div>
+      </div>
+        
+       
     </div>
   );
 };

@@ -52,5 +52,52 @@ export const generateAvatarWithFirstSecondLetter = (name) => {
   )
 }
 
+export const formatDaysFromDate = (dateString) => {
+  // Define the string representing the date
+
+
+// Convert the string to a Date object
+const date = new Date(dateString);
+
+// Get the current date
+const today = new Date();
+
+// Calculate the difference between the two dates in milliseconds
+const diffInMillis = today - date;
+
+// Calculate the number of days, weeks and months from the difference in milliseconds
+const diffInDays = diffInMillis / (1000 * 60 * 60 * 24);
+const diffInWeeks = diffInDays / 7;
+const diffInMonths = today.getMonth() - date.getMonth() + (12 * (today.getFullYear() - date.getFullYear()));
+
+// Log the results
+console.log(`Days: ${diffInDays.toFixed(0)}`);
+console.log(`Weeks: ${diffInWeeks.toFixed(0)}`);
+console.log(`Months: ${diffInMonths.toFixed(0)}`);
+// Find the maximum value among the three values
+const maxValue = Math.max(diffInDays, diffInWeeks, diffInMonths);
+let prefix = "";
+// Check if the difference in days is greater than or equal to 365
+if (diffInDays >= 365) {
+  console.log("1 year");
+} else {
+  // Find the maximum value among the three values
+  const maxValue = Math.max(diffInDays, diffInWeeks, diffInMonths);
+
+  // Determine which unit of time has the highest value and concatenate the appropriate string
+  
+  if (maxValue === diffInDays) {
+    prefix = "days";
+  } else if (maxValue === diffInWeeks) {
+    prefix = "weeks";
+  } else {
+    prefix = "months";
+  }
+
+  // Log the maximum value with the appropriate prefix
+  console.log(`Max value: ${maxValue.toFixed(0)} ${prefix}`);
+}
+return maxValue.toFixed(0) + " " + prefix + " ago";
+}
 
 

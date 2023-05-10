@@ -26,7 +26,7 @@ const AvatarInitials = ({ name }) => {
 
   return (
     <div
-      className={`${getRandomColor()} flex justify-center w-[60px] h-[60px] rounded-full`}
+      className={`${getRandomColor()} flex justify-center w-[36px] h-[36px] rounded-full items-center text-white font-semibold`}
     >
       {Initials}
     </div>
