@@ -11,7 +11,7 @@ const VideoCardContainer = () => {
 
   const filterByRegion = useSelector((store) => store.filters.regionCode);
 
-
+const [pageToken, setPageToken] = useState("");
   useEffect(() => {
     getPopularVideos();
   }, [filterByRegion]);
@@ -22,15 +22,41 @@ const VideoCardContainer = () => {
   }, []);
 
   const handleScroll = () => {
-    console.log("Scroling........")
+    if(window.innerHeight + document.documentElement.scrollTop + 1 >= 
+      document.documentElement.scrollHeight) {
+         getPopularVideosWithToken();
+         console.log(videos);
+    }
+    // console.log("Scroll Height  ", document.documentElement.scrollHeight);
+    // console.log("Inner Height", window.innerHeight);
+    // console.log("Scroll Top", document.documentElement.scrollTop);
   }
 
   const getPopularVideos = async () => {
     try {
-      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion);
+      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion + "&maxResults=15");
       const json = await data.json();
+      ///console.log(json.nextPageToken);
+     // const nextPageToken = json.nextPageToken;
       setVideos(json.items);
-      //console.log(json.items);
+      console.log(json.nextPageToken);
+      setPageToken(json.nextPageToken);
+     // console.log(json);
+      //console.log(videos);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getPopularVideosWithToken = async () => {
+    try {
+      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion + "&maxResults=6&pageToken=" + pageToken);
+      const json = await data.json();
+      //console.log(json.nextPageToken);
+     // const nextPageToken = json.nextPageToken;
+      setVideos(prevVideos => [...prevVideos, ...json.items]);
+      setPageToken(json.pageToken);
+      
     } catch (err) {
       console.log(err);
     }
