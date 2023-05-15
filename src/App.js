@@ -6,6 +6,7 @@ import store from "./utils/store";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchContainer from "./components/WatchContainer";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const appRouter = createBrowserRouter([{
   path: "/",
@@ -13,11 +14,13 @@ const appRouter = createBrowserRouter([{
   children: [
     {
       path: "/",
-      element: <MainContainer />
+      element: <MainContainer />,
+      errorElement: <ErrorBoundary />
     },
     {
       path: "/watch",
-      element: <WatchContainer />
+      element: <WatchContainer />,
+      errorElement: <ErrorBoundary />
     }
   ]
 }])

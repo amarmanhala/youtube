@@ -8,10 +8,10 @@ const VideoCard = ({ data }) => {
   const avatar = generateAvatarWithFirstSecondLetter("Amar Singh");
 
   return (
-    <div className="p-4 w-[360px]">
+    <div className="m-3 w-[360px]">
       <div className="rounded-xl overflow-hidden">
         <img
-          className="w-full h-full bg-zinc-900"
+          className="w-full h-full bg-zinc-900 grayscale"
           alt="fjehfj"
           src={thumbnails.medium.url}
           loading="lazy"

@@ -18,7 +18,7 @@ const WatchContainer = () => {
   return (
     <div className="p-8 flex flex-col justify-center w-full">
      
-      <div className="my-0 flex justify-between"> <iframe width="800" height="600" src={"https://www.youtube.com/embed/" + searchParams.get("v")} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div className="my-0 flex justify-between"> <iframe className="grayscale" width="800" height="600" src={"https://www.youtube.com/embed/" + searchParams.get("v")} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       <LiveChat />
       </div>
 

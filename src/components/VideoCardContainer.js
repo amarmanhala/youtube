@@ -5,15 +5,21 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchVideosContainer from "./SearchVideosContainer";
 import SkeltonVideoCards from "./SkeltonVideoCards";
+import useGetPopularVideos from "../utils/hooks/useGetPopularVideos";
 
 const VideoCardContainer = () => {
   const [videos, setVideos] = useState([]);
+
+  const [movies, isLoading] = useGetPopularVideos();
+
+  console.log("movies", movies);
 
   const filterByRegion = useSelector((store) => store.filters.regionCode);
 
 const [pageToken, setPageToken] = useState("");
   useEffect(() => {
-    getPopularVideos();
+    //getPopularVideos();
+    
   }, [filterByRegion]);
 
   useEffect(() => {
@@ -27,22 +33,18 @@ const [pageToken, setPageToken] = useState("");
          getPopularVideosWithToken();
          console.log(videos);
     }
-    // console.log("Scroll Height  ", document.documentElement.scrollHeight);
-    // console.log("Inner Height", window.innerHeight);
-    // console.log("Scroll Top", document.documentElement.scrollTop);
+    
   }
 
   const getPopularVideos = async () => {
     try {
-      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion + "&maxResults=15");
+      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion + "&maxResults=10");
       const json = await data.json();
-      ///console.log(json.nextPageToken);
-     // const nextPageToken = json.nextPageToken;
+      
       setVideos(json.items);
-      console.log(json.nextPageToken);
+      console.log("Tokem previous", json.nextPageToken);
       setPageToken(json.nextPageToken);
-     // console.log(json);
-      //console.log(videos);
+    
     } catch (err) {
       console.log(err);
     }
@@ -50,12 +52,14 @@ const [pageToken, setPageToken] = useState("");
 
   const getPopularVideosWithToken = async () => {
     try {
+      console.log(pageToken);
       const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + filterByRegion + "&maxResults=6&pageToken=" + pageToken);
       const json = await data.json();
-      //console.log(json.nextPageToken);
-     // const nextPageToken = json.nextPageToken;
+      setPageToken(json.nextPageToken);
       setVideos(prevVideos => [...prevVideos, ...json.items]);
-      setPageToken(json.pageToken);
+      
+      
+      console.log("Tokem next", json.nextPageToken);
       
     } catch (err) {
       console.log(err);
@@ -63,11 +67,11 @@ const [pageToken, setPageToken] = useState("");
   };
   
 
-  return videos.length === 0 ? (
+  return movies.length === 0 ? (
     <SkeltonVideoCards />
   ) : (
-    <div className="flex flex-row flex-wrap">
-      { videos.map((video) => {
+    <div className="flex flex-row flex-wrap justify-center">
+      { movies.map((video) => {
         return (
           <Link to={"/watch?v=" + video.id}>
             <VideoCard data={video} />

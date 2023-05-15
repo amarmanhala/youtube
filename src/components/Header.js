@@ -11,6 +11,7 @@ import {
   setSearchQuery,
 } from "../utils/searchSlice";
 import SearchSuggestions from "./SearchSuggestions";
+import ButtonList from "./ButtonList";
 
 const Header = () => {
   const [searchString, setSearchString] = useState("");
@@ -61,7 +62,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-row justify-between  w-full h-14 py-4 px-6 bg-zinc-950">
+    <header className="flex flex-row justify-between  w-full h-14 py-4 px-6 bg-zinc-950 sticky top-0 z-40">
       <div className="flex flex-row justify-between items-center">
         <div className="flex mr-4">
           <button onClick={() => toggleSidebar()} className="rounded-full">
@@ -93,6 +94,7 @@ const Header = () => {
       <div>
         <MdPerson2 size={24} color="#fff" />
       </div>
+     
     </header>
   );
 };

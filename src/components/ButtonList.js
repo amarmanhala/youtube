@@ -85,7 +85,7 @@ setActive(index);
     dispatch(setRegionCode(regionCode))
   }
   return (
-    <div className="flex flex-row items-center w-full py-3 px-4 overflow-scroll">
+    <div className="flex flex-row items-center w-full py-3 px-4 overflow-scroll sticky top-0">
       {data.map((item, index) => {
         return (
           <div className="mr-4">
