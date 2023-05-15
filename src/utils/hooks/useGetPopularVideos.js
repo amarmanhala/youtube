@@ -7,19 +7,20 @@ const useGetPopularVideos = () => {
   const dispatch = useDispatch();
   const videos = useSelector((store) => store.videos.videos);
   const filterByRegion = useSelector(store => store.filters.regionCode);
-  const [isLoading, setIsLoading] = useState(true)
+  
 
   useEffect(() => {
     getVideos();
-    setIsLoading(false);
+    
+    console.log("Calling......", filterByRegion)
   }, [filterByRegion]);
 
   const getVideos = async () => {
     try {
-      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST, {
-        "maxResults": "10",
-        "regionCode": filterByRegion
-      });
+      const data = await fetch(YOUTUBE_POPULAR_VIDEO_LIST + new URLSearchParams({
+        maxResults: '10',
+        regionCode: filterByRegion,
+    }))
       const json = await data.json();
       dispatch(setVideos(json.items));
     } catch (err) {
@@ -27,7 +28,7 @@ const useGetPopularVideos = () => {
     }
   };
 
-  return [videos, isLoading];
+  return videos;
 };
 
 export default useGetPopularVideos;
