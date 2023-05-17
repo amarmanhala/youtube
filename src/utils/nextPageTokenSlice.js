@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const nextPageTokenSlice = createSlice({
   name: 'nextPageToken',
-  initialState: "",
+  initialState: {
+    pageToken: ""
+  },
   reducers: {
     setNextPageToken: (state, action) => {
-      state = action.payload;
+      state.pageToken = action.payload;
     }
   }
 });
