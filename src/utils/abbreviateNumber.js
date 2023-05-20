@@ -12,7 +12,7 @@ const abbreviateNumber = (number) => {
     }
   }
   
-  return number.toString();
+  return number?.toString();
 }
 
 export default abbreviateNumber;

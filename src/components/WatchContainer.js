@@ -40,13 +40,13 @@ const WatchContainer = () => {
 
           <div>
             <h1 className="text-white text-xl font-semibold">
-              {currentVideo.snippet.title}
+              {currentVideo?.snippet?.title}
             </h1>
             <div className="flex py-3">
               <div className="flex items-center">
-                <AvatarInitials name={currentVideo.snippet.channelTitle} />
+                <AvatarInitials name={currentVideo?.snippet?.channelTitle} />
                 <p className="text-white font-extrabold leading-relaxed ml-2">
-                  {currentVideo.snippet.channelTitle}
+                  {currentVideo?.snippet?.channelTitle}
                 </p>
               </div>
               <button className="text-black font-semibold bg-zinc-100 rounded-full py-2 px-3 ml-6">
@@ -57,13 +57,13 @@ const WatchContainer = () => {
 
           <div className="bg-zinc-800 rounded-lg p-2 w-[980px]">
             <p className="text-white text-sm font-bold">
-              {convertViewsCount(currentVideo.statistics.viewCount)} views
+              {convertViewsCount(currentVideo?.statistics?.viewCount)} views
             </p>
             <p className="text-white text-sm font-bold">
-              {currentVideo.snippet.description}
+              {currentVideo?.snippet?.description}
             </p>
             <div>
-              {currentVideo.snippet.tags.map((tag, index) => {
+              {currentVideo.snippet?.tags?.map((tag, index) => {
                 return (
                   <>
                     <Tag tag={tag} />
@@ -78,7 +78,7 @@ const WatchContainer = () => {
         <LiveChat />
       </div>
 
-      <CommentsContainer commentCounts={currentVideo.statistics.commentCount} />
+      <CommentsContainer commentCounts={currentVideo?.statistics?.commentCount} />
     </div>
   );
 };

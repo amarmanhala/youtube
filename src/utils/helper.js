@@ -23,7 +23,7 @@ export function getRandomName() {
 export const getRandomSentence = () => {
   const words = ['happy', 'cat', 'jumped', 'over', 'the', 'moon'];
   let sentence = '';
-  for (let i = 0; i < words.length; i++) {
+  for (let i = 0; i < words.length - 2; i++) {
     const randomIndex = Math.floor(Math.random() * words.length);
     sentence += words[randomIndex] + ' ';
   }
@@ -38,7 +38,7 @@ export const convertViewsCount = (viewsCount) => {
   } else if (viewsCount >= 1000) {
     return (viewsCount / 1000).toFixed(1) + 'K'; // convert to thousands and add "K"
   } else {
-    return viewsCount.toString(); // return the original number as a string
+    return viewsCount?.toString(); // return the original number as a string
   }
 }
 

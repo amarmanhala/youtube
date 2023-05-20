@@ -26,17 +26,22 @@ const LiveChat = () => {
     };
   }, []);
   return (
-    <div className="bg-zinc-900 w-96 h-96 overflow-y-scroll border border-zinc-500 flex flex-col px-4">
+    <div className="w-96 h-[550px] overflow-y-scroll border border-zinc-700 flex flex-col px-4 rounded-xl justify-between pb-4">
       <div className="py-4">
         <h2 className="text-white">Live Chat</h2>
       </div>
-      <div className="flex w-full overflow-y-scroll flex-col flex-col-reverse">
-        {chatMessages.map((chat, index) => {
-          return (
-            <ChatMessage key={index} name={chat.name} message={chat.message} />
-          );
-        })}
+
+      <div className="flex w-full overflow-y-scroll flex-col h-full">
+       <div className="flex flex-col flex-col-reverse h-full">
+          {chatMessages.map((chat, index) => {
+            return (
+              <ChatMessage key={index} name={chat.name} message={chat.message} />
+            );
+          })}
+       </div>
       </div>
+
+
       <form className="w-full" onSubmit={(e) => {
         e.preventDefault();
         dispatch(addMessage({
@@ -49,7 +54,8 @@ const LiveChat = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="type something..."
-          className="text-white w-full border border-blue-600 bg-transparent p-2 outline-none"
+          className="text-white w-full border-b border-blue-600 bg-transparent p-2 outline-none"
+          autoFocus
         ></input>
       </form>
     </div>

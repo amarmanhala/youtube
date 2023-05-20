@@ -55,7 +55,7 @@ const CommentsData = [
 const Comment = ({ data }) => {
   const { name, comment, replies } = data;
   return (
-    <div className="my-4 flex flex-row items-center bg-zinc-800 p-2 rounded-xl">
+    <div className="my-4 flex flex-row items-center p-2 rounded-xl">
       <MdPeople size={30} />
       <div className="ml-4">
         <h5>
@@ -72,6 +72,7 @@ const CommentList = ({ commentsData }) =>
     return (
       <div>
         <Comment data={comment} />
+        { comment.replies.length === 0 ? null : <button className="text-blue-500 font-bold text-sm">{comment.replies.length} replies</button> }
         <div className="border-l-2 ml-8">
           <CommentList commentsData={comment.replies} />
         </div>
@@ -80,7 +81,7 @@ const CommentList = ({ commentsData }) =>
   });
 
 const CommentsContainer = ({ commentCounts }) => {
-  const formatCommentCounts = commentCounts.toLocaleString('en-US');
+  const formatCommentCounts = commentCounts.toLocaleString("en-US");
   return (
     <div className="mt-12 text-white">
       <h1 className="font-bold">{formatCommentCounts} &nbsp;Comments</h1>
