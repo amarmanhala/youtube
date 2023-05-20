@@ -30,11 +30,12 @@ const WatchContainer = () => {
       <div><iframe width="800" height="600" src={"https://www.youtube.com/embed/" + searchParams.get("v") + "?autoplay=1"} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       <div>
         <h1 className="text-white text-xl font-semibold">{currentVideo.snippet.title}</h1>
-        <div>
-          <div className="flex items-center py-3">
+        <div className="flex py-3">
+          <div className="flex items-center">
             <AvatarInitials name={currentVideo.snippet.channelTitle} />
-            <p className="text-white font-bold ml-2">{currentVideo.snippet.channelTitle}</p>
+            <p className="text-white font-extrabold leading-relaxed ml-2">{currentVideo.snippet.channelTitle}</p>
           </div>
+          <button className="text-black font-semibold bg-zinc-100 rounded-full py-2 px-3 ml-6">Subscribe</button>
         </div>
       </div>
       </div>
