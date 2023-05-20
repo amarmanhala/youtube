@@ -11,7 +11,6 @@ import {
   setSearchQuery,
 } from "../utils/searchSlice";
 import SearchSuggestions from "./SearchSuggestions";
-import ButtonList from "./ButtonList";
 
 const Header = () => {
   const [searchString, setSearchString] = useState("");
@@ -94,7 +93,6 @@ const Header = () => {
       <div>
         <MdPerson2 size={24} color="#fff" />
       </div>
-     
     </header>
   );
 };

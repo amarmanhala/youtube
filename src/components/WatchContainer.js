@@ -78,7 +78,9 @@ const WatchContainer = () => {
         <LiveChat />
       </div>
 
-      <CommentsContainer commentCounts={currentVideo?.statistics?.commentCount} />
+      <CommentsContainer
+        commentCounts={currentVideo?.statistics?.commentCount}
+      />
     </div>
   );
 };

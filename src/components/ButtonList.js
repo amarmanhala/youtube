@@ -75,21 +75,27 @@ const data = [
 ];
 
 const ButtonList = () => {
-
   const dispatch = useDispatch();
   const [active, setActive] = useState(0);
 
   const handleFilterByRegion = (regionCode, index) => {
     console.log("Dispatch", regionCode);
-setActive(index);
-    dispatch(setRegionCode(regionCode))
-  }
+    setActive(index);
+    dispatch(setRegionCode(regionCode));
+  };
   return (
     <div className="flex flex-row items-center w-full py-3 px-4 overflow-scroll sticky top-0">
       {data.map((item, index) => {
         return (
           <div className="mr-4">
-            <FilterButton key={index} isActive={active} keyProps={index} label={item.name} regionCode={item.region_code} onClick={() => handleFilterByRegion(item.region_code, index)} />
+            <FilterButton
+              key={index}
+              isActive={active}
+              keyProps={index}
+              label={item.name}
+              regionCode={item.region_code}
+              onClick={() => handleFilterByRegion(item.region_code, index)}
+            />
           </div>
         );
       })}

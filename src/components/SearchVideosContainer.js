@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import useGetVideosBySearch from "../utils/hooks/useGetVideosBySearch";
 import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_BASE_SEARCH_URL } from "../utils/config";
 import { Link } from "react-router-dom";
@@ -9,20 +8,18 @@ import { cacheSearchResults } from "../utils/searchSlice";
 const SearchVideosContainer = () => {
   const dispatch = useDispatch();
   const searchQuery = useSelector((store) => store.search.searchQuery);
-  const searchVideoResults = useSelector(store => store.search.searchResults);
+  const searchVideoResults = useSelector((store) => store.search.searchResults);
 
   console.log(searchVideoResults);
 
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    if(searchVideoResults[searchQuery]) {
-      setVideos(searchVideoResults[searchQuery])
-    }
-    else {
+    if (searchVideoResults[searchQuery]) {
+      setVideos(searchVideoResults[searchQuery]);
+    } else {
       getVideosBySearch(searchQuery);
     }
-    
   }, [searchQuery]);
 
   const getVideosBySearch = async (searchQuery) => {
@@ -31,9 +28,11 @@ const SearchVideosContainer = () => {
     );
     const json = await data.json();
     setVideos(json.items);
-    dispatch(cacheSearchResults({
-      [searchQuery]: json.items
-    }))
+    dispatch(
+      cacheSearchResults({
+        [searchQuery]: json.items,
+      })
+    );
     console.log(json.items);
   };
 

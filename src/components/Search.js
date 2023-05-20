@@ -2,11 +2,10 @@ import React from "react";
 import { MdOutlineSearch } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { searchTrue, setSearchQuery } from "../utils/searchSlice";
-import useGetVideosBySearch from "../utils/hooks/useGetVideosBySearch";
 
 const Search = ({ value, onChange, onFocus, onBlur }) => {
   const dispatch = useDispatch();
-  
+
   const handleSearch = () => {
     dispatch(searchTrue());
     dispatch(setSearchQuery(value));

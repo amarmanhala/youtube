@@ -72,7 +72,11 @@ const CommentList = ({ commentsData }) =>
     return (
       <div>
         <Comment data={comment} />
-        { comment.replies.length === 0 ? null : <button className="text-blue-500 font-bold text-sm">{comment.replies.length} replies</button> }
+        {comment.replies.length === 0 ? null : (
+          <button className="text-blue-500 font-bold text-sm">
+            {comment.replies.length} replies
+          </button>
+        )}
         <div className="border-l-2 ml-8">
           <CommentList commentsData={comment.replies} />
         </div>

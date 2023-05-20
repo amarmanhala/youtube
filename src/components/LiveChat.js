@@ -32,24 +32,32 @@ const LiveChat = () => {
       </div>
 
       <div className="flex w-full overflow-y-scroll flex-col h-full">
-       <div className="flex flex-col flex-col-reverse h-full">
+        <div className="flex flex-col flex-col-reverse h-full">
           {chatMessages.map((chat, index) => {
             return (
-              <ChatMessage key={index} name={chat.name} message={chat.message} />
+              <ChatMessage
+                key={index}
+                name={chat.name}
+                message={chat.message}
+              />
             );
           })}
-       </div>
+        </div>
       </div>
 
-
-      <form className="w-full" onSubmit={(e) => {
-        e.preventDefault();
-        dispatch(addMessage({
-          name: "Amar",
-          message: message
-        }));
-        setMessage("");
-      }}>
+      <form
+        className="w-full"
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(
+            addMessage({
+              name: "Amar",
+              message: message,
+            })
+          );
+          setMessage("");
+        }}
+      >
         <input
           value={message}
           onChange={(e) => setMessage(e.target.value)}
