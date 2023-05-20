@@ -1,14 +1,11 @@
-import { useSelector } from "react-redux";
-import { GOOGLE_API_KEY, YOUTUBE_BASE_SEARCH_URL } from "../config";
+import { YOUTUBE_BASE_SEARCH_URL } from "../config";
 import { useEffect, useState } from "react";
 
 const useGetVideosBySearch = (searchQuery) => {
   const [videos, setVideos] = useState();
-  console.log(searchQuery);
 
   useEffect(() => {
     getVideosBySearch(searchQuery);
-    //console.log(videos);
   }, []);
 
   const getVideosBySearch = async (searchQuery) => {

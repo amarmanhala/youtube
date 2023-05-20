@@ -11,7 +11,7 @@ const VideoCard = ({ data }) => {
     <div className="m-3 w-[360px]">
       <div className="rounded-xl overflow-hidden">
         <img
-          className="w-full h-full bg-zinc-900 grayscale"
+          className="w-full h-full bg-zinc-900"
           alt="fjehfj"
           src={thumbnails.medium.url}
           loading="lazy"
