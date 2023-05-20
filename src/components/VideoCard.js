@@ -5,7 +5,6 @@ import AvatarInitials from "./AvatarInitials";
 const VideoCard = ({ data }) => {
   const { snippet, statistics } = data;
   const { title, publishedAt, thumbnails, channelTitle, channelId } = snippet;
-  const avatar = generateAvatarWithFirstSecondLetter("Amar Singh");
 
   return (
     <div className="m-3 w-[360px]">

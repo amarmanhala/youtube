@@ -42,14 +42,7 @@ export const convertViewsCount = (viewsCount) => {
   }
 }
 
-export const generateAvatarWithFirstSecondLetter = (name) => {
-  const words = name.split(" ");
-  return (
-    <div className="w-[50px] h-[50px] bg-red-400 text-white">
-      <span>A</span>
-    </div>
-  )
-}
+
 
 export const formatDaysFromDate = (dateString) => {
   // Define the string representing the date
