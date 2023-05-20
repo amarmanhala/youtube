@@ -79,10 +79,11 @@ const CommentList = ({ commentsData }) =>
     );
   });
 
-const CommentsContainer = () => {
+const CommentsContainer = ({ commentCounts }) => {
+  const formatCommentCounts = commentCounts.toLocaleString('en-US');
   return (
     <div className="mt-12 text-white">
-      <h1>Comments</h1>
+      <h1 className="font-bold">{formatCommentCounts} &nbsp;Comments</h1>
       <CommentList commentsData={CommentsData} />
     </div>
   );
