@@ -3,7 +3,7 @@ import { MdOutlineSearch } from "react-icons/md";
 
 const SearchSuggestions = ({ searchSuggestions, handleSearch }) => {
   return (
-    <div className="bg-white border border-zinc-200 relative w-full rounded-xl mt-1 z-50">
+    <div className="bg-white border border-zinc-200 absolute w-[60%] sm:w-[460px] top-12 rounded-xl mt-1 z-50">
       <div className="py-6">
         <ul className="text-lg font-medium">
           {searchSuggestions.map((suggestion, index) => {

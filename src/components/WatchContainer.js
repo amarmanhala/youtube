@@ -21,9 +21,9 @@ const WatchContainer = () => {
   }, []);
 
   return (
-    <div className="p-8 flex flex-col justify-center w-full">
-      <div className="my-0 flex flex-row justify-between">
-        <div className="w-[70%]">
+    <div className="p-2 sm:p-8 flex flex-col justify-center w-full">
+      <div className="my-0 flex flex-col sm:flex-row sm:justify-between">
+        <div className="w-full sm:w-[70%]">
           <iframe
             className="w-full"
             height="600"
@@ -39,13 +39,13 @@ const WatchContainer = () => {
           ></iframe>
 
           <div>
-            <h1 className="text-white text-xl font-semibold">
+            <h1 className="text-white text-md sm:text-xl font-semibold">
               {currentVideo?.snippet?.title}
             </h1>
             <div className="flex py-3">
               <div className="flex items-center">
                 <AvatarInitials name={currentVideo?.snippet?.channelTitle} />
-                <p className="text-white font-extrabold leading-relaxed ml-2">
+                <p className="text-white font-bold text-sm sm:font-extrabold leading-relaxed ml-2">
                   {currentVideo?.snippet?.channelTitle}
                 </p>
               </div>
@@ -55,23 +55,14 @@ const WatchContainer = () => {
             </div>
           </div>
 
-          <div className="bg-zinc-800 rounded-lg p-2 w-[980px]">
+          <div className="bg-zinc-800 rounded-lg p-2 w-full">
             <p className="text-white text-sm font-bold">
               {convertViewsCount(currentVideo?.statistics?.viewCount)} views
             </p>
-            <p className="text-white text-sm font-bold">
+            <p className="text-white text-xs sm:text-sm font-medium sm:font-bold">
               {currentVideo?.snippet?.description}
             </p>
-            <div>
-              {currentVideo.snippet?.tags?.map((tag, index) => {
-                return (
-                  <>
-                    <Tag tag={tag} />
-                    {(index + 1) % 4 === 0 && <br />}
-                  </>
-                );
-              })}
-            </div>
+           
           </div>
         </div>
 

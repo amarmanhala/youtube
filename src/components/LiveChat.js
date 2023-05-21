@@ -26,7 +26,7 @@ const LiveChat = () => {
     };
   }, []);
   return (
-    <div className="w-[25%] h-[550px] overflow-y-scroll border border-zinc-700 flex flex-col px-4 rounded-xl justify-between pb-4">
+    <div className="w-full mt-4 sm:mt-0 sm:w-[25%] h-[550px] overflow-y-scroll border border-zinc-700 flex flex-col px-4 rounded-xl justify-between pb-4">
       <div className="py-4">
         <h2 className="text-white">Live Chat</h2>
       </div>
