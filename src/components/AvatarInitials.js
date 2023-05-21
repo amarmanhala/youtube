@@ -26,7 +26,7 @@ const AvatarInitials = ({ name }) => {
 
   return (
     <div
-      className={`bg-zinc-800 flex justify-center w-[36px] h-[36px] rounded-full items-center text-white font-semibold`}
+      className={`bg-zinc-800 flex justify-center w-[30px] h-[30px] sm:w-[36px] sm:h-[36px] rounded-full items-center text-white font-medium text-sm sm:font-semibold`}
     >
       {Initials}
     </div>

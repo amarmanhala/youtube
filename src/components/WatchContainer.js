@@ -22,10 +22,10 @@ const WatchContainer = () => {
 
   return (
     <div className="p-8 flex flex-col justify-center w-full">
-      <div className="my-0 flex justify-between">
-        <div>
+      <div className="my-0 flex flex-row justify-between">
+        <div className="w-[70%]">
           <iframe
-            width="800"
+            className="w-full"
             height="600"
             src={
               "https://www.youtube.com/embed/" +

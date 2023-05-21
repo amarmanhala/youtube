@@ -84,7 +84,7 @@ const ButtonList = () => {
     dispatch(setRegionCode(regionCode));
   };
   return (
-    <div className="flex flex-row items-center w-full py-3 px-4 overflow-scroll sticky top-0">
+    <div className="flex flex-row items-center w-full py-1 sm:py-3 px-4 overflow-scroll sticky top-0">
       {data.map((item, index) => {
         return (
           <div className="mr-4">

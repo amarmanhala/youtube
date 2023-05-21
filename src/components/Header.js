@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineMenu, MdPerson2 } from "react-icons/md";
 import logo from "../logo_dark.png";
+import logoIcon from "../youtube_icon.png";
 import Search from "./Search";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleActionForSidebar } from "../utils/sidebarToggleSlice";
@@ -61,20 +62,21 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-row justify-between  w-full h-14 py-4 px-6 bg-zinc-950 sticky top-0 z-40">
+    <header className="flex flex-row justify-between  w-full h-14 py-4 px-2 sm:px-6 bg-zinc-950 sticky top-0 z-40 items-center">
       <div className="flex flex-row justify-between items-center">
-        <div className="flex mr-4">
+        <div className="flex mr-1 sm:mr-4">
           <button onClick={() => toggleSidebar()} className="rounded-full">
             <MdOutlineMenu size={24} color="#fff" />
           </button>
         </div>
         <div>
           <a href="/">
-            <img alt="youtube logo" src={logo} className="h-[20px] w-[90px]" />
+            <img alt="youtube logo" src={logo} className="h-[20px] w-[90px] hidden sm:block md:block lg:block" />
+            <img alt="youtube logo" src={logoIcon} className="h-[20px] w-[30px] block lg:hidden md:hidden xl:hidden" />
           </a>
         </div>
       </div>
-      <div className="flex flex-col w-[40%]">
+      <div className="flex flex-col w-[80%] sm:w-[40%]">
         <div className="w-full">
           <Search
             value={searchString}
@@ -90,7 +92,7 @@ const Header = () => {
           />
         )}
       </div>
-      <div>
+      <div className="hidden sm:block">
         <MdPerson2 size={24} color="#fff" />
       </div>
     </header>

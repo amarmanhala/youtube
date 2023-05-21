@@ -19,7 +19,7 @@ const Search = ({ value, onChange, onFocus, onBlur }) => {
         onBlur={onBlur}
         type="text"
         placeholder="Search"
-        className="w-full px-4 py-2 bg-transparent text-white placeholder:text-gray-500 border border-[#303030] border-r-0 rounded-l-full font-normal text-sm outline-none"
+        className="w-full px-2 sm:px-4 py-2 bg-transparent text-white placeholder:text-gray-500 border border-[#303030] border-r-0 rounded-l-full font-normal text-xs sm:text-sm outline-none"
       />
       <button
         onClick={() => handleSearch()}

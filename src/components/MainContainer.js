@@ -8,7 +8,7 @@ const MainContainer = () => {
   const search = useSelector((store) => store.search.search);
 
   return (
-    <div className="w-5/6">
+    <div className="w-full sm:w-5/6">
       {!search ? (
         <>
           <ButtonList />
