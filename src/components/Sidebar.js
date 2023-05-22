@@ -52,7 +52,7 @@ const Sidebar = () => {
   };
 
   return !isSidebarOpen ? null : (
-    <div className="w-1/6 h-full bg-zinc-950 p-6 overflow-y">
+    <div className="sm:w-1/6 h-full bg-zinc-950 p-6 overflow-y absolute sm:relative z-50">
       <div>
         <ul className="text-white text-sm font-medium">
           {data.map((item, index) => {
