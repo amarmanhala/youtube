@@ -10,7 +10,7 @@ const SearchVideosContainer = () => {
   const searchQuery = useSelector((store) => store.search.searchQuery);
   const searchVideoResults = useSelector((store) => store.search.searchResults);
 
-  console.log(searchVideoResults);
+  //console.log(searchVideoResults);
 
   const [videos, setVideos] = useState([]);
 
@@ -33,7 +33,7 @@ const SearchVideosContainer = () => {
         [searchQuery]: json.items,
       })
     );
-    console.log(json.items);
+    //console.log(json.items);
   };
 
   return videos.length === 0 ? (
@@ -41,9 +41,10 @@ const SearchVideosContainer = () => {
   ) : (
     <div className="mt-14 pt-6 sm:pl-20 border-t border-t-zinc-700 flex flex-col items-center sm:items-start">
       {videos.map((video) => {
+       // console.log(video)
         return (
-          <Link to={"/watch?v=" + video.id}>
-            <SearchVideoCard data={video} />s
+          <Link to={"/watch?v=" + video.id.videoId}>
+            <SearchVideoCard data={video} />
           </Link>
         );
       })}

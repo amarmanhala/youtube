@@ -54,7 +54,7 @@ const Header = () => {
   };
 
   const handleSearch = (suggestion) => {
-    console.log(suggestion);
+    
     setSearchString(suggestion);
     dispatch(searchTrue());
     dispatch(setSearchQuery(suggestion));

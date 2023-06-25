@@ -79,7 +79,7 @@ const ButtonList = () => {
   const [active, setActive] = useState(0);
 
   const handleFilterByRegion = (regionCode, index) => {
-    console.log("Dispatch", regionCode);
+    
     setActive(index);
     dispatch(setRegionCode(regionCode));
   };

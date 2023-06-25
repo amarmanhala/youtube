@@ -63,15 +63,15 @@ const diffInWeeks = diffInDays / 7;
 const diffInMonths = today.getMonth() - date.getMonth() + (12 * (today.getFullYear() - date.getFullYear()));
 
 // Log the results
-console.log(`Days: ${diffInDays.toFixed(0)}`);
-console.log(`Weeks: ${diffInWeeks.toFixed(0)}`);
-console.log(`Months: ${diffInMonths.toFixed(0)}`);
+//console.log(`Days: ${diffInDays.toFixed(0)}`);
+//console.log(`Weeks: ${diffInWeeks.toFixed(0)}`);
+//console.log(`Months: ${diffInMonths.toFixed(0)}`);
 // Find the maximum value among the three values
 const maxValue = Math.max(diffInDays, diffInWeeks, diffInMonths);
 let prefix = "";
 // Check if the difference in days is greater than or equal to 365
 if (diffInDays >= 365) {
-  console.log("1 year");
+  //console.log("1 year");
 } else {
   // Find the maximum value among the three values
   const maxValue = Math.max(diffInDays, diffInWeeks, diffInMonths);
@@ -87,7 +87,7 @@ if (diffInDays >= 365) {
   }
 
   // Log the maximum value with the appropriate prefix
-  console.log(`Max value: ${maxValue.toFixed(0)} ${prefix}`);
+  //console.log(`Max value: ${maxValue.toFixed(0)} ${prefix}`);
 }
 return maxValue.toFixed(0) + " " + prefix + " ago";
 }

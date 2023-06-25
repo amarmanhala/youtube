@@ -85,7 +85,7 @@ const CommentList = ({ commentsData }) =>
   });
 
 const CommentsContainer = ({ commentCounts }) => {
-  const formatCommentCounts = commentCounts.toLocaleString("en-US");
+  const formatCommentCounts = commentCounts?.toLocaleString("en-US");
   return (
     <div className="mt-12 text-white">
       <h1 className="font-bold">{formatCommentCounts} &nbsp;Comments</h1>

@@ -14,7 +14,7 @@ const WatchContainer = () => {
   const videos = useSelector((store) => store.videos.videos);
   const currentVideo = videos.find((obj) => obj?.id === searchParams.get("v"));
 
-  console.log(currentVideo);
+  //console.log(currentVideo);
 
   useEffect(() => {
     dispatch(closeSideBar());

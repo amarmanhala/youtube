@@ -15,12 +15,12 @@ const getRandomColor = () => {
 const AvatarInitials = ({ name }) => {
   getRandomColor();
   let Initials = "";
-  const words = name.split(" ");
-  if (words.length === 1) {
+  const words = name?.split(" ");
+  if (words?.length === 1) {
     Initials = words[0].charAt(0);
   }
 
-  if (words.length >= 2) {
+  if (words?.length >= 2) {
     Initials = words[0].charAt(0) + words[1].charAt(0);
   }
 
